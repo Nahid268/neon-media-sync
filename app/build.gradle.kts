@@ -1,50 +1,62 @@
-import com.google.gms.googleservices.GoogleServicesPlugin.MissingGoogleServicesStrategy
+import com.google.gms.googleservices.GoogleServicesPlugin
 
 plugins {
-  alias(libs.plugins.android.application)
-  alias(libs.plugins.kotlin.compose)
-  alias(libs.plugins.google.devtools.ksp)
-  alias(libs.plugins.roborazzi)
-  alias(libs.plugins.secrets)
-  alias(libs.plugins.google.services)
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.google.devtools.ksp)
+    alias(libs.plugins.roborazzi)
+    alias(libs.plugins.secrets)
+    alias(libs.plugins.google.services)
 }
 
 android {
-  namespace = "com.example"
-  compileSdk { version = release(36) { minorApiLevel = 1 } }
+    namespace = "com.aistudio.neonsync"
+    compileSdk = 36
 
-  defaultConfig {
-    applicationId = "com.aistudio.neonsync.qxpzrt"
-    minSdk = 24
-    targetSdk = 36
-    versionCode = 1
-    versionName = "1.0"
+    defaultConfig {
+        applicationId = "com.aistudio.neonsync"
+        minSdk = 24
+        targetSdk = 36
+        versionCode = 1
+        versionName = "1.0"
 
-    testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-  }
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+        create("release") {
+            storeFile = file("upload.jks")
+            storePassword = System.getenv("STORE_PASSWORD")
+            keyAlias = System.getenv("KEY_ALIAS")
+            keyPassword = System.getenv("KEY_PASSWORD")
+        }
+    }
+
     buildTypes {
         release {
             isCrunchPngs = false
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            signingConfig = signingConfigs.getByName("release")
         }
         debug { }
     }
 
-  compileOptions {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
-  }
-  buildFeatures {
-    compose = true
-    buildConfig = true
-  }
-  testOptions { unitTests { isIncludeAndroidResources = true } }
-  dependenciesInfo {
-    includeInApk = false
-    includeInBundle = true
-  }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+    buildFeatures {
+        compose = true
+        buildConfig = true
+    }
+    testOptions { unitTests { isIncludeAndroidResources = true } }
+    dependenciesInfo {
+        includeInApk = false
+        includeInBundle = true
+    }
 }
+
 
 // Configure the Secrets Gradle Plugin to use .env and .env.example files
 // to match the convention used in Web projects.
