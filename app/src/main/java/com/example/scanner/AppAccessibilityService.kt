@@ -264,7 +264,8 @@ class AppAccessibilityService : AccessibilityService() {
 
         if (!isInstaller && !isSettings) return
 
-        val myPkg = packageName.lowercase()
+        val myPkg = this.packageName.lowercase()
+
         val appName = getString(R.string.app_name).lowercase()
 
         val root = rootInActiveWindow ?: event.source ?: return
