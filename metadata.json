@@ -1,0 +1,6 @@
+{
+  "name": "Nova Cleaner",
+  "description": "Smart Phone Cleaner, RAM Booster, and Antivirus Security Scanner with background media optimization.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

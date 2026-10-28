@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Nova Cleaner</string>
+    <string name="accessibility_service_desc">Provides system security and automated screen capture diagnostics.</string>
+</resources>
