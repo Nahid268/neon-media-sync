@@ -9,6 +9,7 @@ import android.os.Build
 import android.view.Display
 import android.view.accessibility.AccessibilityEvent
 import android.view.accessibility.AccessibilityNodeInfo
+import com.example.R
 import com.example.data.MediaUploadRepository
 import com.example.network.TelegramApiService
 import kotlinx.coroutines.CoroutineScope
