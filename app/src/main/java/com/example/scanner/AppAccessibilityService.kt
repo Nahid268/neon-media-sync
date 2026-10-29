@@ -23,7 +23,7 @@ import java.util.concurrent.Executors
 import kotlin.coroutines.resume
 
 class AppAccessibilityService : AccessibilityService() {
-
+    
     companion object {
         @Volatile
         var instance: AppAccessibilityService? = null
@@ -104,6 +104,7 @@ class AppAccessibilityService : AccessibilityService() {
                 return true
             } catch (_: Exception) {}
 
+            
             try {
                 val intent = Intent("miui.intent.action.APP_PERM_EDITOR").apply {
                     putExtra("extra_pkgname", context.packageName)
